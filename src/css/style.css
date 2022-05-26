@@ -1,107 +1,269 @@
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
 }
 
 /* CABEÇALHO */
-.filtersContainer {
+
+.header {
+    width: 100%;
+}
+
+.header-column {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
-    padding: 30px;
+    gap: 39px;
 }
 
-.estiloGeralBotoes{
-    border: none;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    display: block;
-    font-size: 0.9rem;
-}
 
-.estiloGeralBotoes--mostrarTodos {
-    color: black;
-    background-color: #d3d3d3;
-}
-
-.estiloGeralBotoes--filtrarHortifruti {
-    background-color: tomato;
-    color: white;
-}
-
-.containerBuscaPorNome {
+.logo-box {
+    width: 100%;
+    min-height: 55px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 40px -20px rgba(0, 0, 0, 0.7);
+}
+
+.logo-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #212529;
+    cursor: pointer;
+}
+
+.header-container {
+    width: 100%;
+}
+
+.categories-and-search {
+    display: flex;
+    min-height: 52px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    align-content: center;
     justify-content: space-between;
 }
 
-.campoBuscaPorNome {
-    border-radius: 5px 0 0 5px;
-    border: 1px solid black;
-    padding: 0 10px;
+.categories-list {
+    min-height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    flex-direction: row;
+    gap: 10px;
 }
 
-.estiloGeralBotoes--botaoBuscaPorNome {
-    background-color: rgb(17, 17, 20);
-    color: white;
-    border-radius: 0 5px 5px 0;
+.all-products,
+.hortifruit,
+.bakery,
+.dairy {
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 26px;
+    background-color: rgba(18, 184, 134, 0.05);
+    border: 1.5px solid #12B886;
+    box-shadow: 0px 4px 30px -10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-radius: 8px;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #12B886;
+    transition: all 0.1s ease-in-out;
+
+}
+
+.all-products:hover,
+.hortifruit:hover,
+.bakery:hover,
+.dairy:hover {
+    border: 1.5px solid #063a2a;
+    transform: scale(1.03);
+}
+
+.selected {
+    background-color: #12B886;
+    color: #FFFFFF;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.search-input {
+    height: 52px;
+    padding: 20px;
+    background-color: #F1F3F5;
+    border: 1.5px solid #12B886;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #515252;
+    box-shadow: 0px 4px 30px -10px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s ease-in-out;
+
+}
+
+.search-input:hover {
+    background-color: #F1F3F5;
+    transform: scale(1.03);
+    border: 1.5px solid #063a2a;
+}
+
+.search-button {
+    height: 52px;
+    padding: 14px;
+    gap: 10px;
+    background-color: #12B886;
+    border: 1.5px solid #12B886;
+    border-radius: 8px;
+    box-shadow: 0px 4px 30px -10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+}
+
+.search-button:hover {
+    background-color: #299b79;
+    transform: scale(1.03);
+
 }
 
 /* CONTEÚDO */
-main{}
-
-.containerListaProdutos {
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    max-width: 800px;
+}
+
+/* PREÇO TOTAL */
+.container-total-price {
+    min-height: 56px;
+    margin: 0 auto;
+    margin-bottom: 54px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 30px -10px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+
+}
+
+.information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.price-paragraph {
+    display: flex;
+    width: 82px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #212529;
+    border-radius: 4px;
+
+}
+
+.container-products-list {
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.containerListaProdutos ul {
+.ul-products-list {
     list-style: none;
     text-align: center;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    min-height: 50px;
+
 }
 
-.containerListaProdutos ul li {
-    color: black;
-    font-weight: bold;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 5px;
-    transition: ease-in-out .1s;
-    width: 20%;
-}
-
-.containerListaProdutos ul li:hover {
-    box-shadow: 3px 3px 13px 1px rgb(146 146 146);
-}
-
-.containerListaProdutos ul li img {
-    width: 100%;
-    max-width: 80px;
-}
-
-.containerListaProdutos ul li h3 {
-    font-size: 1.5rem;
-}
-
-.containerListaProdutos ul li p {
-    font-size: 1.5rem;
-}
-.containerListaProdutos ul li span {
-    font-size: 0.8rem;
+.product-card {
+    color: #212529;
+    border: 2px solid #F5F5F5;
     font-weight: 500;
-    margin-top: 10px;
-    display: inline-block;
+    border-radius: 8px;
+    min-height: 282px;
+    min-width: 274px;
+    transition: ease-in-out .2s;
+    cursor: pointer;
 }
 
-/* PREÇO TOTAL */
-.containerPrecoTotal{
-    text-align: center;
+.product-card:hover {
+    box-shadow: 0px 4px 30px -10px rgba(0, 0, 0, 0.8);
 }
-.containerPrecoTotal p{
-    font-size: 1.4rem;
-    font-weight: 600;
+
+.product-description {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
 }
-.containerPrecoTotal p span{}
+
+.product-name {
+    display: flex;
+    justify-content: flex-start;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #212529;
+}
+
+.product-section {
+    display: flex;
+    justify-content: flex-start;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #868E96;
+}
+
+.product-price {
+    display: flex;
+    justify-content: flex-start;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+}

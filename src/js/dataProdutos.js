@@ -18,7 +18,7 @@ const produtos = [
         preco: 2,
         secao: 'Hortifruti',
         categoria: 'fruta',
-        img: './src/img/maça.png'
+        img: './src/img/maca.png'
     },
     {
         nome: 'Pão',
@@ -30,8 +30,29 @@ const produtos = [
     {
         nome: 'Leite',
         preco: 5,
-        secao: 'Laticínio',
+        secao: 'Laticínios',
         categoria: 'Leite',
         img: './src/img/leite.png'
+    },
+    {
+        nome: 'Iorgute de Morango',
+        preco: 3,
+        secao: 'Laticínios',
+        categoria: 'Iogurte',
+        img: './src/img/iogurte-de-morango.png'
+    },
+    {
+        nome: 'Bolo',
+        preco: 10,
+        secao: 'Panificadora',
+        categoria: 'Bolo',
+        img: './src/img/bolo.png'
+    },
+    {
+        nome: 'Torta',
+        preco: 10,
+        secao: 'Panificadora',
+        categoria: 'Tortas',
+        img: './src/img/torta-de-maca.png'
     }
 ]
