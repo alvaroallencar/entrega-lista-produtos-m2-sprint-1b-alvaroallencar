@@ -24,40 +24,43 @@ function search(productsList) {
 
         event.preventDefault();
 
+        removeClassSelected();
         allProductsButton.classList.add("selected");
-
-        let hortifruitButton = document.querySelector(".hortifruit");
-        hortifruitButton.classList.remove("selected");
-
-        let bakeryButton = document.querySelector(".bakery");
-        bakeryButton.classList.remove("selected");
-
-        let dairyButton = document.querySelector(".dairy");
-        dairyButton.classList.remove("selected");
-
 
         let searchInput = document.querySelector(".search-input");
 
         let searchInputValue = searchInput.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 
-        let filteredSearch = [];
-
-        productsList.forEach((product) => {
-
-            if ((product.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(searchInputValue) === true) ||
-                (product.nome.toLowerCase().includes(searchInputValue) === true)) {
-
-                filteredSearch.push(product);
-
-            }
-
-        });
+        let filteredSearch = filteringSearch(productsList, searchInputValue);
 
         createProductCard(filteredSearch);
 
         totalPrice(filteredSearch);
 
     });
+
+}
+
+function filteringSearch(productsList, searchInputValue) {
+
+    let filtered = productsList.filter((product) => {
+
+        let searchFiltersCheckers = {
+            removingSpecialCharsFromName: product.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(searchInputValue),
+            notRemovingSpecialCharsFromName: product.nome.toLowerCase().includes(searchInputValue),
+            removingSpecialCharsFromSection: product.secao.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(searchInputValue),
+            notRemovingSpecialCharsFromSection: product.secao.toLowerCase().includes(searchInputValue),
+            removingSpecialCharsFromCategory: product.categoria.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(searchInputValue),
+            notRemovingSpecialCharsFromCategory: product.categoria.toLowerCase().includes(searchInputValue),
+        };
+
+        return searchFiltersCheckers.removingSpecialCharsFromName || searchFiltersCheckers.notRemovingSpecialCharsFromName ||
+            searchFiltersCheckers.removingSpecialCharsFromSection || searchFiltersCheckers.notRemovingSpecialCharsFromSection ||
+            searchFiltersCheckers.removingSpecialCharsFromCategory || searchFiltersCheckers.notRemovingSpecialCharsFromCategory;
+
+    });
+
+    return filtered;
 
 }
 
@@ -73,22 +76,30 @@ function addingEventListenersToHeaderButtons(productsList) {
 
 }
 
+function removeClassSelected() {
+
+    let allProductsButton = document.querySelector(".all-products");
+    allProductsButton.classList.remove("selected");
+
+    let hortifruitButton = document.querySelector(".hortifruit");
+    hortifruitButton.classList.remove("selected");
+
+    let bakeryButton = document.querySelector(".bakery");
+    bakeryButton.classList.remove("selected");
+
+    let dairyButton = document.querySelector(".dairy");
+    dairyButton.classList.remove("selected");
+
+}
+
 function filteringAllProducts(productsList) {
 
     let allProductsButton = document.querySelector(".all-products");
 
     allProductsButton.addEventListener("click", () => {
 
+        removeClassSelected();
         allProductsButton.classList.add("selected");
-
-        let hortifruitButton = document.querySelector(".hortifruit");
-        hortifruitButton.classList.remove("selected");
-
-        let bakeryButton = document.querySelector(".bakery");
-        bakeryButton.classList.remove("selected");
-
-        let dairyButton = document.querySelector(".dairy");
-        dairyButton.classList.remove("selected");
 
         createProductCard(productsList);
 
@@ -104,28 +115,10 @@ function filteringHortifruitProducts(productsList) {
 
     hortifruitButton.addEventListener("click", () => {
 
+        removeClassSelected();
         hortifruitButton.classList.add("selected");
 
-        let allProductsButton = document.querySelector(".all-products");
-        allProductsButton.classList.remove("selected");
-
-        let bakeryButton = document.querySelector(".bakery");
-        bakeryButton.classList.remove("selected");
-
-        let dairyButton = document.querySelector(".dairy");
-        dairyButton.classList.remove("selected");
-
-        let filteredHortifruitProducts = [];
-
-        productsList.forEach((product) => {
-
-            if (product.secao === "Hortifruti") {
-
-                filteredHortifruitProducts.push(product);
-
-            }
-
-        });
+        let filteredHortifruitProducts = productsList.filter(product => product.secao === "Hortifruti");
 
         createProductCard(filteredHortifruitProducts);
 
@@ -141,28 +134,10 @@ function filteringBakeryProducts(productsList) {
 
     bakeryButton.addEventListener("click", () => {
 
+        removeClassSelected();
         bakeryButton.classList.add("selected");
 
-        let allProductsButton = document.querySelector(".all-products");
-        allProductsButton.classList.remove("selected");
-
-        let hortifruitButton = document.querySelector(".hortifruit");
-        hortifruitButton.classList.remove("selected");
-
-        let dairyButton = document.querySelector(".dairy");
-        dairyButton.classList.remove("selected");
-
-        let filteredBakeryProducts = [];
-
-        productsList.forEach((product) => {
-
-            if (product.secao === "Panificadora") {
-
-                filteredBakeryProducts.push(product);
-
-            }
-
-        });
+        let filteredBakeryProducts = productsList.filter(product => product.secao === "Panificadora");
 
         createProductCard(filteredBakeryProducts);
 
@@ -178,28 +153,10 @@ function filteringDairyProducts(productsList) {
 
     dairyButton.addEventListener("click", () => {
 
+        removeClassSelected();
         dairyButton.classList.add("selected");
 
-        let allProductsButton = document.querySelector(".all-products");
-        allProductsButton.classList.remove("selected");
-
-        let hortifruitButton = document.querySelector(".hortifruit");
-        hortifruitButton.classList.remove("selected");
-
-        let bakeryButton = document.querySelector(".bakery");
-        bakeryButton.classList.remove("selected");
-
-        let filteredDairyProducts = [];
-
-        productsList.forEach((product) => {
-
-            if (product.secao === "Laticínios") {
-
-                filteredDairyProducts.push(product);
-
-            }
-
-        });
+        let filteredDairyProducts = productsList.filter(product => product.secao === "Laticínios");
 
         createProductCard(filteredDairyProducts);
 
@@ -214,11 +171,7 @@ function totalPrice(productsList) {
     let priceParagraph = document.querySelector(".price-paragraph");
     priceParagraph.classList.add("price-paragraph");
 
-    let total = 0;
-
-    productsList.forEach((product) => {
-        total += product.preco;
-    });
+    let total = productsList.reduce((acc, currentValue) => acc + currentValue.preco, 0);
 
     priceParagraph.innerText = `R$ ${total.toFixed(2).replace(".", ",")}`;
 
@@ -296,6 +249,30 @@ function createDescription(product, productDescription) {
     productPrice.classList.add("product-price");
     productPrice.innerText = `R$ ${product.preco.toFixed(2).replace(".", ",")}`;
     productDescription.append(productPrice);
+
+    createNutritionalInformationBox(product, productDescription);
+
+}
+
+function createNutritionalInformationBox(product, productDescription) {
+
+    let productNutritionalInformation = document.createElement("h3");
+    productNutritionalInformation.classList.add("product-nutritional-information");
+    productNutritionalInformation.innerText = "Informação Nutricional";
+    productDescription.append(productNutritionalInformation);
+
+    let ulNutritionalInformation = document.createElement("ul");
+    ulNutritionalInformation.classList.add("ul-nutritional-information");
+    productDescription.append(ulNutritionalInformation);
+
+    product.componentes.forEach((information) => {
+
+        let li = document.createElement("li");
+        li.classList.add("nutritional-information");
+        li.innerText = information;
+        ulNutritionalInformation.append(li);
+
+    });
 
 }
 
