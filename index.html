@@ -24,18 +24,18 @@
             </div>
 
             <div class="header-container">
-                <div class="categories-and-search">
-                    <nav class="categories">
-                        <ul id="filters" class="categories-list">
-                            <li class="category-name"><button class="category-button all-products">Todos os
-                                    Produtos</button></li>
-                            <li class="category-name"><button class="category-button hortifruit">Hortifruti</button>
-                            </li>
-                            <li class="category-name"><button class="category-button bakery">Panificadora</button></li>
-                            <li class="category-name"><button class="category-button dairy">Laticínios</button></li>
-                        </ul>
-                    </nav>
+                <nav class="categories">
+                    <ul id="filters" class="categories-list">
+                        <li class="category-name"><button class="category-button all-products">Todos os
+                                Produtos</button></li>
+                        <li class="category-name"><button class="category-button hortifruit">Hortifruti</button>
+                        </li>
+                        <li class="category-name"><button class="category-button bakery">Panificadora</button></li>
+                        <li class="category-name"><button class="category-button dairy">Laticínios</button></li>
+                    </ul>
+                </nav>
 
+                <div class="search">
                     <form class="search-box">
                         <input type="text" placeholder="Nome do produto" class="search-input">
                         <button class="search-button">&#128269;</button>
@@ -48,18 +48,31 @@
     <main class="main-container">
 
         <div class="main-column">
-            <div class="container-total-price">
-                <p class="information">Valor total dos produtos da seção selecionada:</p>
-                <p class="price-paragraph"></p>
-            </div>
 
-            <div class="container-products-list">
+            <ul class="ul-products-list">
 
-                <ul class="ul-products-list">
+            </ul>
+
+            <section class="cart">
+                <div class="cart-title-box">
+                    <h2 class="cart-title">Carrinho de compras</h2>
+                </div>
+                <ul class="ul-items-in-cart">
 
                 </ul>
 
-            </div>
+                <div class="total-and-quantity">
+                    <div class="quantity-box">
+                        <p class="cart-quantity">Quantidade</p>
+                        <p class="quantity-value"></p>
+                    </div>
+                    <div class="total-box">
+                        <p class="cart-total">Total</p>
+                        <p class="total-value"></p>
+                    </div>
+                </div>
+            </section>
+
         </div>
 
     </main>
